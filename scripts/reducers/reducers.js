@@ -6,8 +6,8 @@ import { combineReducers } from "redux";
 /************************************************
 / Variables
 /***********************************************/
-import common from "./common/common";
+import user from "./user/user";
 
-const reducers = combineReducers({common});
+const reducers = combineReducers({user});
 
 export default reducers;

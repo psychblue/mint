@@ -14,8 +14,8 @@ class App extends Component {
 
     return (
       <div>
-        <div>{this.props.common.title}</div>
-        <button onClick={(e) => this.props.dispatch(actions.setTitle("Blue"))}>click</button>
+        <div>{this.props.user.username}</div>
+        <button onClick={(e) => this.props.dispatch(actions.setUserinfo("Blue", true))}>click</button>
       </div>
     )
   }

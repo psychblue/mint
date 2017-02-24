@@ -1,7 +1,7 @@
-import { setTitle } from "./common/common";
+import { setUserinfo } from "./user/user";
 
 const actions = {
-  setTitle
+  setUserinfo
 };
 
 export default actions;
