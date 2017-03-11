@@ -11,6 +11,8 @@ var files = {
 
 
 var webpackOptions = {
+  target: "web",
+
   entry: {
     javascript: "./scripts/index.js"
   },
@@ -18,6 +20,12 @@ var webpackOptions = {
   output: {
     filename: "mint.min.js"
   },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
+  ],
 
   module: {
     loaders: [
@@ -31,16 +39,8 @@ var webpackOptions = {
         }
       }
     ]
-  },
+  }
 
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        //'NODE_ENV': '"production"'
-        'NODE_ENV': '"development"'
-      }
-    })
-  ]
 };
 
 gulp.task("default", ["watch", "build-js", "build-css"]);
@@ -48,7 +48,7 @@ gulp.task("default", ["watch", "build-js", "build-css"]);
 gulp.task("build-js", function(){
 
   return gulp.src(files.js)
-    .pipe(webpackStream(webpackOptions))
+    .pipe(webpackStream(webpackOptions, webpack))
     //.pipe(uglify())
     .pipe(gulp.dest("../scripts"));
 });
